@@ -1,9 +1,42 @@
-export interface Layout {
-  id: number | string;
+export interface RowsLayout {
+  topNav: string;
+  mainContent: string;
+  bottomPanel: string;
+  footer: string;
 }
 
-export function createLayout(params: Partial<Layout>) {
+export interface ColumnsLayout {
+  sideNav: string;
+  sidePanel: string;
+  content: string;
+}
+
+export interface LayoutState {
+  sidePanelWidth: number;
+  contentPanelWidth: number;
+  mainContentHeight: number;
+  bottomPanelHeight: number;
+  gridRows: RowsLayout;
+  gridColumns: ColumnsLayout;
+}
+
+export function createInitialState(): LayoutState {
   return {
-
-  } as Layout;
+    sidePanelWidth: 15,
+    contentPanelWidth: 85,
+    mainContentHeight: 100,
+    bottomPanelHeight: 0,
+    gridRows: {
+      topNav: '4.5rem',
+      mainContent: '1fr',
+      bottomPanel: '1fr',
+      footer: '3.5rem'
+    },
+    gridColumns: {
+      sideNav: '2rem',
+      sidePanel: '15%',
+      content: '1fr',
+    }
+  } as LayoutState
 }
+

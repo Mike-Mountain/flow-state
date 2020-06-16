@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Query } from '@datorama/akita';
-import { LayoutStore, LayoutState } from './layout.store';
+import { LayoutStore } from './layout.store';
+import {LayoutState} from "./layout.model";
 
 @Injectable({ providedIn: 'root' })
 export class LayoutQuery extends Query<LayoutState> {

@@ -1,1 +1,14 @@
-<p>layout works!</p>
+<main class="app-container">
+  <header class="top-navigation">Top Navigation</header>
+  <aside class="side-navigation">
+    <p>Side navigation</p>
+  </aside>
+  <aside class="side-panel" appResizeLayout [cellName]="'sidePanel'" [direction]="'columns'">
+    Side Panel
+  </aside>
+  <section class="main-content">Main Content</section>
+  <section class="bottom-panel" appResizeLayout [cellName]="'bottomPanel'" [direction]="'rows'">
+    Bottom Panel
+  </section>
+  <footer class="footer-navigation">Footer Navigation</footer>
+</main>

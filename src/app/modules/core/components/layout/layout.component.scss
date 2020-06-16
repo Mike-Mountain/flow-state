@@ -1,0 +1,53 @@
+.app-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 4.5rem 1fr 1fr 3.5rem;
+  grid-template-columns: 2rem 15% 1fr;
+  grid-template-areas:
+    "header header header"
+    "sidenav sidepanel maincontent"
+    "sidenav bottompanel bottompanel"
+    "footer footer footer";
+}
+
+.top-navigation {
+  grid-area: header;
+  background: orange;
+  position: relative;
+}
+
+.side-navigation {
+  grid-area: sidenav;
+  background: greenyellow;
+  position: relative;
+  p {
+    transform: rotate(90deg);
+  }
+}
+
+.side-panel {
+  grid-area: sidepanel;
+  background: orangered;
+  position: relative;
+}
+
+.main-content {
+  grid-area: maincontent;
+  background: deepskyblue;
+  position: relative;
+}
+
+.bottom-panel {
+  grid-area: bottompanel;
+  background: mediumpurple;
+  position: relative;
+}
+
+.footer-navigation {
+  grid-area: footer;
+  background: seagreen;
+  position: relative;
+}
+

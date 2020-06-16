@@ -17,4 +17,11 @@
   --darkerValues: 38, 43, 51;
   --dark: #2f343f;
   --darkValues: 47, 52, 63;
+
+  --text: var(--light);
+  --pageBg: var(--darker);
+  --cardBg: var(--dark);
+  --cardTitle: var(--light);
+  --borderColor: var(--light);
+  --boxShadow:  0 2px 4px rgba(0, 0, 0, 0.8), 0 0 3px 1px rgba(0, 0, 0, 0.8);
 }

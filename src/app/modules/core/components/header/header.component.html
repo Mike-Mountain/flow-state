@@ -1,0 +1,103 @@
+<section class="header">
+  <nav class="top-navigation">
+    <div class="flex-start list-style-none pl-0 pt-1">
+      <a routerLink="/home">
+      <span class="app-nav-link mr-2">
+        <i class="fas fa-home fa-sm"></i>
+      </span>
+      </a>
+
+      <a routerLink="/home/about">
+      <span class="app-nav-link mr-2">
+        <i class="far fa-question-circle fa-sm"></i>
+      </span>
+      </a>
+
+      <a href="https://github.com/Mike-Mountain/FlowState" target="_blank">
+      <span class="app-nav-link mr-2">
+        <i class="fas fa-code fa-sm"></i>
+      </span>
+      </a>
+
+      <a href="https://trello.com/b/vRgNbywM/flowstate" target="_blank">
+      <span class="app-nav-link mr-2">
+        <i class="fab fa-trello"></i>
+      </span>
+      </a>
+    </div>
+
+    <div class="text-muted flex-center mx-2 mt-1">
+      |
+    </div>
+
+    <div class="dropdown mx-2" #projectsOrigin>
+      <button class="dropdown-toggle flex-center" (click)="openDropdown(projects, projectsOrigin)">
+        <i class="fas fa-code fa-sm mr-2"></i>
+        <ng-container *ngIf="selectedProject">
+          {{selectedProject.title}}
+        </ng-container>
+        <ng-container *ngIf="!selectedProject">
+          Please select a project
+        </ng-container>
+        <i class="fas fa-sort-down ml-2 mb-1"></i>
+      </button>
+    </div>
+
+    <div class="flex-start list-style-none pl-0 pt-1 ml-1">
+      <a
+        class="app-nav-link flex-center mr-2"
+        [class.disabled]="!selectedProject"
+        (click)="runProject()"
+      >
+        <i class="fas fa-play fa-sm"></i>
+      </a>
+
+      <a
+        class="app-nav-link flex-center mr-2"
+        [class.disabled]="!selectedProject"
+        [href]="selectedProject?.githubUrl" target="_blank"
+      >
+        <i class="fab fa-github fa-sm"></i>
+      </a>
+
+      <a
+        class="app-nav-link flex-center mr-2"
+        [class.disabled]="!selectedProject"
+        [href]="selectedProject?.url" target="_blank"
+      >
+        <i class="fas fa-link fa-sm"></i>
+      </a>
+
+      <span class="text-muted flex-center mr-2">
+      |
+    </span>
+
+      <a (click)="isSearching = !isSearching">
+      <span class="app-nav-link flex-center mr-2">
+        <i class="fas fa-search fa-sm"></i>
+      </span>
+      </a>
+      <input
+        class="search-box"
+        id="search"
+        name="search"
+        placeholder="Search"
+        (keydown.enter)="search(searchText)"
+        [class.show-search]="isSearching"
+        [(ngModel)]="searchText"
+      >
+      <button class="button button-primary button-sm d-none ml-1" [class.show-search]="isSearching" (click)="search(searchText)">Search</button>
+    </div>
+  </nav>
+  <nav class="nav breadcrumbs-nav pl-2">
+    <small><span class="font-weight-bold">FlowState</span> > src > app > shared > shared.module.ts</small>
+  </nav>
+</section>
+
+<ng-template #projects>
+  <div class="dropdown-target">
+      <button class="dropdown-link">
+        Test Project
+      </button>
+  </div>
+</ng-template>

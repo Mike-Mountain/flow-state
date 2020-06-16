@@ -1,14 +1,21 @@
 <main class="app-container">
-  <header class="top-navigation">Top Navigation</header>
+  <header class="top-navigation">
+    <app-header></app-header>
+  </header>
   <aside class="side-navigation">
-    <p>Side navigation</p>
+    <app-side-nav></app-side-nav>
   </aside>
   <aside class="side-panel" appResizeLayout [cellName]="'sidePanel'" [direction]="'columns'">
-    Side Panel
+    <app-side-panel></app-side-panel>
   </aside>
-  <section class="main-content">Main Content</section>
-  <section class="bottom-panel" appResizeLayout [cellName]="'bottomPanel'" [direction]="'rows'">
-    Bottom Panel
+  <section class="main-content">
+    <app-content-nav></app-content-nav>
+    <router-outlet></router-outlet>
   </section>
-  <footer class="footer-navigation">Footer Navigation</footer>
+  <section class="bottom-panel" appResizeLayout [cellName]="'bottomPanel'" [direction]="'rows'">
+    <p>Bottom Panel Works!</p>
+  </section>
+  <footer class="footer-navigation">
+    <app-footer></app-footer>
+  </footer>
 </main>

@@ -27,7 +27,7 @@ export function createInitialState(): LayoutState {
     mainContentHeight: 100,
     bottomPanelHeight: 0,
     gridRows: {
-      topNav: '4.5rem',
+      topNav: '4rem',
       mainContent: '1fr',
       bottomPanel: '1fr',
       footer: '3.5rem'

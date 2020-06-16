@@ -3,7 +3,7 @@
   height: 100%;
   overflow: hidden;
   display: grid;
-  grid-template-rows: 4.5rem 1fr 1fr 3.5rem;
+  grid-template-rows: 4rem 1fr 1fr 3.5rem;
   grid-template-columns: 2rem 15% 1fr;
   grid-template-areas:
     "header header header"
@@ -14,14 +14,15 @@
 
 .top-navigation {
   grid-area: header;
-  background: orange;
   position: relative;
+  background: var(--dark);
 }
 
 .side-navigation {
   grid-area: sidenav;
-  background: greenyellow;
   position: relative;
+  background: var(--dark);
+  border-top: 1px solid var(--borderColor);
   p {
     transform: rotate(90deg);
   }
@@ -29,25 +30,28 @@
 
 .side-panel {
   grid-area: sidepanel;
-  background: orangered;
   position: relative;
+  border-top: 1px solid var(--borderColor);
+  border-right: 1px solid var(--borderColor);
+  background: var(--darker);
+  padding: .25rem;
 }
 
 .main-content {
   grid-area: maincontent;
-  background: deepskyblue;
   position: relative;
+  background: var(--darker);
 }
 
 .bottom-panel {
   grid-area: bottompanel;
-  background: mediumpurple;
   position: relative;
+  background: var(--darker);
 }
 
 .footer-navigation {
   grid-area: footer;
-  background: seagreen;
   position: relative;
+  background: var(--dark);
 }
 

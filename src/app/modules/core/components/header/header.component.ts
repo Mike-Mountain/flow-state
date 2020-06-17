@@ -1,5 +1,5 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {DialogRef, DialogService} from "ng-mountain";
+import {NgmDialogRef, NgmDialogService} from "ng-mountain";
 
 @Component({
   selector: 'app-header',
@@ -12,9 +12,9 @@ export class HeaderComponent implements OnInit {
   public isSearching: boolean;
   public searchText: string;
 
-  private dialogRef: DialogRef;
+  private dialogRef: NgmDialogRef;
 
-  constructor(private dialogService: DialogService) {
+  constructor(private dialogService: NgmDialogService) {
   }
 
   ngOnInit(): void {

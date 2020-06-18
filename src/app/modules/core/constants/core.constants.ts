@@ -11,7 +11,7 @@ export const vitaList: NgmListItem[] = [
 export const utilList: NgmListItem[] = [
   {label: 'Github', value: 'github'},
   {label: 'Theme', value: 'theme'},
-  {label: 'Admin', value: 'admin'},
+  {label: 'Admin', value: 'admin', isHidden: true},
   {label: 'Login', value: 'login'},
-  {label: 'Logout', value: 'logout'},
+  {label: 'Logout', value: 'logout', isHidden: true},
 ]

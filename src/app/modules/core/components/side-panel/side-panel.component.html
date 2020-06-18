@@ -1,5 +1,10 @@
-<section class="side-panel">
-  <nav class="projects" *ngIf="projectsIsActive">
+<section class="side-panel-inner">
+  <nav
+    *ngIf="projectsIsActive"
+    class="projects"
+    [class.h-100]="projectsIsActive && !blogIsActive"
+    [class.h-50]="projectsIsActive && blogIsActive"
+  >
     <div class="horizontal-nav">
       <div class="w-50 flex-start">
         <i class="fas fa-folder mx-1"></i>
@@ -21,7 +26,12 @@
     ></ngm-list>
   </nav>
 
-  <nav class="blog" *ngIf="blogIsActive">
+  <nav
+    *ngIf="blogIsActive"
+    class="blog"
+    [class.h-100]="blogIsActive && !projectsIsActive"
+    [class.h-50]="blogIsActive && projectsIsActive"
+  >
     <div class="horizontal-nav">
       <div class="w-50 flex-start">
         <i class="fas fa-folder mx-1"></i>

@@ -14,7 +14,7 @@ export class LayoutService {
 
   updateLayoutState(state: Partial<LayoutState>) {
     const currentState: LayoutState = this.layoutStore.getValue();
-    const newState = {state, ...currentState};
+    const newState = {...currentState, ...state};
     this.layoutStore.update(newState);
   }
 

@@ -1,18 +1,34 @@
-<main class="app-container">
+<main class="app-container" *ngIf="layoutQuery.select() | async as layout">
   <header class="top-navigation">
     <app-header></app-header>
   </header>
   <aside class="side-navigation">
-    <app-side-nav></app-side-nav>
+    <app-side-nav
+      [layout]="layout"
+    ></app-side-nav>
   </aside>
-  <aside class="side-panel" appResizeLayout [cellName]="'sidePanel'" [direction]="'columns'">
-    <app-side-panel></app-side-panel>
+  <aside
+    class="side-panel"
+    appResizeLayout
+    direction="columns"
+    [panelName]="'sidePanel'"
+    [layout]="layout"
+  >
+    <app-side-panel
+      [layout]="layout"
+    ></app-side-panel>
   </aside>
   <section class="main-content">
     <app-content-nav></app-content-nav>
     <router-outlet></router-outlet>
   </section>
-  <section class="bottom-panel" appResizeLayout [cellName]="'bottomPanel'" [direction]="'rows'">
+  <section
+    class="bottom-panel"
+    appResizeLayout
+    direction="rows"
+    [panelName]="'bottomPanel'"
+    [layout]="layout"
+  >
     <p>Bottom Panel Works!</p>
   </section>
   <footer class="footer-navigation">

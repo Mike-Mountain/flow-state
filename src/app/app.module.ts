@@ -7,6 +7,7 @@ import {NG_ENTITY_SERVICE_CONFIG} from '@datorama/akita-ng-entity-service';
 import {AkitaNgDevtools} from '@datorama/akita-ngdevtools';
 import {environment} from '../environments/environment';
 import {CoreModule} from "./modules/core/core.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -16,12 +17,13 @@ import {CoreModule} from "./modules/core/core.module";
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    HttpClientModule,
     environment.production ? [] : AkitaNgDevtools
   ],
   providers: [
     {
       provide: NG_ENTITY_SERVICE_CONFIG,
-      useValue: {baseUrl: 'https://jsonplaceholder.typicode.com'}
+      useValue: {baseUrl: environment.apiUrl}
     }
   ],
   bootstrap: [AppComponent]

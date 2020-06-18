@@ -1,0 +1,12 @@
+.projects, .blog {
+  display: flex;
+  flex-direction: column;
+}
+
+.horizontal-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--dark);
+  width: 100%;
+}

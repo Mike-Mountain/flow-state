@@ -11,6 +11,11 @@ export interface ColumnsLayout {
   content: string;
 }
 
+export interface SideNavState {
+  projects: boolean;
+  blog: boolean;
+}
+
 export interface LayoutState {
   sidePanelWidth: number;
   contentPanelWidth: number;
@@ -18,6 +23,7 @@ export interface LayoutState {
   bottomPanelHeight: number;
   gridRows: RowsLayout;
   gridColumns: ColumnsLayout;
+  sideNavState: SideNavState;
 }
 
 export function createInitialState(): LayoutState {
@@ -36,7 +42,10 @@ export function createInitialState(): LayoutState {
       sideNav: '2rem',
       sidePanel: '15%',
       content: '1fr',
+    },
+    sideNavState: {
+      projects: true,
+      blog: false
     }
   } as LayoutState
 }
-

@@ -1,7 +1,52 @@
-<ngm-list
-  tagColor="accent"
-  tagPosition="left"
-  hoverColor="primary"
-  [title]="'Projects'"
-  [items]="testProjects"
-></ngm-list>
+<section class="side-panel">
+  <nav class="projects" *ngIf="projectsIsActive">
+    <div class="horizontal-nav">
+      <div class="w-50 flex-start">
+        <i class="fas fa-folder mx-1"></i>
+        <small>Projects</small>
+      </div>
+      <div class="w-50 flex-end">
+        <button class="ngm-btn ngm-btn-outline-danger btn-sm mr-2" (click)="closeSection('projectsIsActive')">
+          -
+        </button>
+      </div>
+    </div>
+    <ngm-list
+      *ngIf="projects.length > 0; else noProjects"
+      class="w-100"
+      tagPosition="left"
+      tagColor="accent"
+      hoverColor="primary"
+      [items]="projects"
+    ></ngm-list>
+  </nav>
+
+  <nav class="blog" *ngIf="blogIsActive">
+    <div class="horizontal-nav">
+      <div class="w-50 flex-start">
+        <i class="fas fa-folder mx-1"></i>
+        <small>Blog</small>
+      </div>
+      <div class="w-50 flex-end">
+        <button class="ngm-btn ngm-btn-outline-danger btn-sm mr-2" (click)="closeSection('blogIsActive')">
+          -
+        </button>
+      </div>
+    </div>
+    <ngm-list
+      *ngIf="blogPosts?.length > 0; else noBlog"
+      tagPosition="left"
+      tagColor="accent"
+      hoverColor="primary"
+      [items]="blogPosts"
+    ></ngm-list>
+  </nav>
+</section>
+
+<ng-template #noProjects>
+  <p>There are no Projects</p>
+</ng-template>
+
+<ng-template #noBlog>
+  <p>There are no Blog Posts</p>
+</ng-template>

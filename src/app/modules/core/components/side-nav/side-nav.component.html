@@ -1,1 +1,25 @@
-<p>side-nav works!</p>
+<nav class="vertical-nav">
+  <div class="vertical-navigation">
+    <button
+      class="vertical-tab"
+      [class.vertical-tab-active]="state?.sideNavState?.projects"
+      (click)="togglePanel('projects')"
+    >
+      <small>
+        <i class="fas fa-folder"></i>
+        1: Project
+      </small>
+    </button>
+
+    <button
+      class="vertical-tab"
+      [class.vertical-tab-active]="state?.sideNavState?.blog"
+      (click)="togglePanel('blog')"
+    >
+      <small>
+        <i class="fas fa-newspaper"></i>
+        2: Blog
+      </small>
+    </button>
+  </div>
+</nav>

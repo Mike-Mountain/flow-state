@@ -1,13 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ListComponent } from './components/list/list.component';
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ListComponent} from './components/list/list.component';
+import {ListItemDirective} from "./directives/list-item.directive";
 
 
 @NgModule({
-  declarations: [ListComponent],
+  declarations: [
+    ListComponent,
+    ListItemDirective
+  ],
+  exports: [
+    ListComponent
+  ],
   imports: [
     CommonModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

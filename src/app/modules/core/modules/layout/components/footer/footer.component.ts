@@ -1,6 +1,6 @@
 import {Component, ElementRef, NgZone, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {NgmListItem} from "ng-mountain";
-import {utilList, vitaList} from "../../constants/core.constants";
+import {utilList, vitaList} from "../../../../constants/core.constants";
 import {DatePipe} from "@angular/common";
 
 @Component({

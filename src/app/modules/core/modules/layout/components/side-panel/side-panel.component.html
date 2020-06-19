@@ -1,9 +1,9 @@
 <section class="side-panel-inner">
   <nav
-    *ngIf="projectsIsActive"
+    *ngIf="state.projects"
     class="projects"
-    [class.h-100]="projectsIsActive && !blogIsActive"
-    [class.h-50]="projectsIsActive && blogIsActive"
+    [class.h-100]="state.projects && !state.blog"
+    [class.h-50]="state.projects && state.blog"
   >
     <div class="horizontal-nav">
       <div class="w-50 flex-start">
@@ -11,26 +11,26 @@
         <small>Projects</small>
       </div>
       <div class="w-50 flex-end">
-        <button class="ngm-btn ngm-btn-outline-danger btn-sm mr-2" (click)="closeSection('projectsIsActive')">
+        <button class="ngm-btn ngm-btn-outline-danger btn-sm mr-2" (click)="closeSection('projects')">
           -
         </button>
       </div>
     </div>
-    <ngm-list
+    <app-list
       *ngIf="projects.length > 0; else noProjects"
       class="w-100"
       tagPosition="left"
       tagColor="accent"
       hoverColor="primary"
       [items]="projects"
-    ></ngm-list>
+    ></app-list>
   </nav>
 
   <nav
-    *ngIf="blogIsActive"
+    *ngIf="state.blog"
     class="blog"
-    [class.h-100]="blogIsActive && !projectsIsActive"
-    [class.h-50]="blogIsActive && projectsIsActive"
+    [class.h-100]="state.blog && !state.projects"
+    [class.h-50]="state.blog && state.projects"
   >
     <div class="horizontal-nav">
       <div class="w-50 flex-start">
@@ -38,18 +38,18 @@
         <small>Blog</small>
       </div>
       <div class="w-50 flex-end">
-        <button class="ngm-btn ngm-btn-outline-danger btn-sm mr-2" (click)="closeSection('blogIsActive')">
+        <button class="ngm-btn ngm-btn-outline-danger btn-sm mr-2" (click)="closeSection('blog')">
           -
         </button>
       </div>
     </div>
-    <ngm-list
+    <app-list
       *ngIf="blogPosts?.length > 0; else noBlog"
       tagPosition="left"
       tagColor="accent"
       hoverColor="primary"
       [items]="blogPosts"
-    ></ngm-list>
+    ></app-list>
   </nav>
 </section>
 

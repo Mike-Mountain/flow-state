@@ -1,0 +1,26 @@
+<section class="ngm-list">
+  <ng-container *ngIf="title">
+    <h3 class="text-center">{{title}}</h3>
+    <hr class="w-75 mx-auto">
+  </ng-container>
+  <div
+    class="h-100"
+    [ngClass]="direction === 'vertical' ? ['flex-center', 'flex-column', 'align-items-start'] : ['flex-center']"
+  >
+    <ng-container *ngFor="let item of items">
+      <button
+        *ngIf="!item.isHidden"
+        ngmListItem
+        class="ngm-list-item h-100"
+        [class.text-center]="direction === 'horizontal'"
+        [tagPosition]="tagPosition"
+        [tagColor]="tagColor"
+        [hoverColor]="hoverColor"
+        [isActive]="selectedValue === item.value"
+        (click)="selectValue(item.value)"
+      >
+        {{item.label}}
+      </button>
+    </ng-container>
+  </div>
+</section>

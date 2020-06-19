@@ -2,7 +2,7 @@
   <div class="vertical-navigation">
     <button
       class="vertical-tab"
-      [class.vertical-tab-active]="state?.sideNavState?.projects"
+      [class.vertical-tab-active]="state.projects"
       (click)="togglePanel('projects')"
     >
       <small>
@@ -13,7 +13,7 @@
 
     <button
       class="vertical-tab"
-      [class.vertical-tab-active]="state?.sideNavState?.blog"
+      [class.vertical-tab-active]="state.blog"
       (click)="togglePanel('blog')"
     >
       <small>

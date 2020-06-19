@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {LayoutQuery} from "../../stores/layout/layout.query";
 
 @Component({
   selector: 'app-layout',
@@ -8,7 +7,7 @@ import {LayoutQuery} from "../../stores/layout/layout.query";
 })
 export class LayoutComponent implements OnInit {
 
-  constructor(public layoutQuery: LayoutQuery) {
+  constructor() {
   }
 
   ngOnInit(): void {

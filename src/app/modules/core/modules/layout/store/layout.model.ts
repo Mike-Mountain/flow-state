@@ -1,0 +1,41 @@
+export interface Layout {
+  gridRows: GridRows;
+  gridColumns: GridColumns;
+}
+
+export interface GridRows {
+  headerRow: string;
+  contentRow: string;
+  bottomContentRow: string;
+  footerRow: string;
+}
+
+export interface GridColumns {
+  sideNavCol: string;
+  sidePanelCol: string;
+  contentCol: string;
+}
+
+export function createLayout(layout: Partial<Layout>): Layout {
+  return {
+    gridRows: createGridRows(layout?.gridRows),
+    gridColumns: createGridColumns(layout?.gridColumns)
+  } as Layout
+}
+
+export function createGridRows(rows: Partial<GridRows>): GridRows {
+  return {
+    headerRow: rows?.headerRow ?? '2.5rem',
+    contentRow: rows?.contentRow ?? '1fr',
+    bottomContentRow: rows?.bottomContentRow ?? '1fr', // 0
+    footerRow: rows?.footerRow ?? '3rem'
+  } as GridRows;
+}
+
+export function createGridColumns(columns: Partial<GridColumns>): GridColumns {
+  return {
+    sideNavCol: columns?.sideNavCol ?? '2rem',
+    sidePanelCol: columns?.sidePanelCol ?? '15%',
+    contentCol: columns?.contentCol ?? '1fr'
+  } as GridColumns;
+}

@@ -1,0 +1,24 @@
+.resize-helper-row {
+  position: absolute;
+  top: -.4rem;
+  right: 0;
+  height: .4rem;
+  width: 100%;
+  background: #2f343f;
+  cursor: row-resize;
+}
+
+.resize-helper-col {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: .5rem;
+  background: #2f343f;
+  cursor: col-resize;
+}
+
+.resize-helper-hidden {
+  opacity: 0;
+  pointer-events: none;
+}

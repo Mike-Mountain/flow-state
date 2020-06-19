@@ -27,8 +27,8 @@ export function createGridRows(rows: Partial<GridRows>): GridRows {
   return {
     headerRow: rows?.headerRow ?? '2.5rem',
     contentRow: rows?.contentRow ?? '1fr',
-    bottomContentRow: rows?.bottomContentRow ?? '1fr', // 0
-    footerRow: rows?.footerRow ?? '3rem'
+    bottomContentRow: rows?.bottomContentRow ?? '0',
+    footerRow: rows?.footerRow ?? '3.5rem'
   } as GridRows;
 }
 

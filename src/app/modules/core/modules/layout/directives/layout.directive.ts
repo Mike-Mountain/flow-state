@@ -25,25 +25,7 @@ export class LayoutDirective implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.createHelperElements();
-    this.layoutSubscription = this.layoutQuery.select().subscribe((layout) => {
-      // If the current layout has not been set, use the initial layout
-      if (!this.currentLayout) {
-        this.currentLayout = createLayout({});
-      }
-      const grid: string =
-        this.panelName === 'sidePanelCol' ?
-          'gridColumns' :
-          'gridRows';
-      // Make sure to only update the panel who's size has changed
-      if (this.hasChanged(this.currentLayout[grid][this.panelName], layout[grid][this.panelName])) {
-        const grid = this.direction === 'rows' ?
-          layout.gridRows :
-          layout.gridColumns;
-        this.resizeElement(grid);
-      }
-      // Set current layout for the next iteration
-      this.currentLayout = layout;
-    });
+    this.subscribeToLayout();
     this.listen();
   }
 
@@ -51,15 +33,37 @@ export class LayoutDirective implements OnInit, OnDestroy {
     this.layoutSubscription.unsubscribe();
   }
 
+  private subscribeToLayout(): void {
+    this.layoutSubscription = this.layoutQuery.select().subscribe((layout) => {
+      // If the current layout has not been set, use the initial layout
+      if (!this.currentLayout) {
+        this.currentLayout = createLayout({});
+      }
+
+      const gridName: string =
+        this.panelName === 'sidePanelCol' ?
+          'gridColumns' :
+          'gridRows';
+
+      const grid = this.direction === 'rows' ?
+        layout.gridRows :
+        layout.gridColumns;
+
+      // Make sure to only update the panel who's size has changed
+      const hasChanged = this.hasChanged(this.currentLayout[gridName][this.panelName], layout[gridName][this.panelName]);
+      if (hasChanged || this.currentLayout[gridName][this.panelName] !== '0') {
+        // TODO: Create the resize helper only when necessary
+        this.toggleResizeHelper(grid);
+        this.resizeElement(grid);
+      }
+      // Set current layout for the next iteration
+      this.currentLayout = layout;
+    });
+  }
+
   private resizeElement(grid: GridColumns | GridRows) {
     const gridValues = Object.values(grid).join(' ');
     this.renderer.setStyle(this.parentNode, `grid-template-${this.direction}`, gridValues);
-
-    if (gridValues.split(' ').includes('0')) {
-      this.renderer.addClass(this.resizeHelper, 'resize-helper-hidden');
-    } else {
-      this.renderer.removeClass(this.resizeHelper, 'resize-helper-hidden');
-    }
   };
 
   private listen() {
@@ -75,6 +79,15 @@ export class LayoutDirective implements OnInit, OnDestroy {
         this.layoutService.updateSidePanelCol((event.screenX - 29) + 'px') :
         this.layoutService.updateBottomContentRow((windowHeight - event.pageY) - 45 + 'px');
     })
+  }
+
+  private toggleResizeHelper(grid: GridColumns | GridRows) {
+    const gridValues = Object.values(grid).join(' ');
+    if (gridValues.split(' ').includes('0')) {
+      this.renderer.addClass(this.resizeHelper, 'resize-helper-hidden');
+    } else {
+      this.renderer.removeClass(this.resizeHelper, 'resize-helper-hidden');
+    }
   }
 
   private createHelperElements() {

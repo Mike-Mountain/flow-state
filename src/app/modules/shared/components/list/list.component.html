@@ -10,7 +10,7 @@
     <ng-container *ngFor="let item of items">
       <button
         *ngIf="!item.isHidden"
-        ngmListItem
+        appListItem
         class="ngm-list-item h-100"
         [class.text-center]="direction === 'horizontal'"
         [tagPosition]="tagPosition"

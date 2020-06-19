@@ -7,13 +7,14 @@
       hoverColor="primary"
       direction="horizontal"
       [items]="vitaeList"
+      (value)="changeActivePanel($event)"
     ></app-list>
   </div>
   <div class="w-50 h-100 flex-end">
     <button
       #date
       class="ngm-list-item h-100 flex-end"
-      ngmListItem
+      appListItem
       tagPosition="top"
       tagColor="accent"
       hoverColor="primary"
@@ -26,6 +27,7 @@
       hoverColor="primary"
       direction="horizontal"
       [items]="utilList"
+      (value)="changeActivePanel($event)"
     ></app-list>
   </div>
 </div>

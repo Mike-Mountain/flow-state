@@ -1,0 +1,24 @@
+.app-nav-link {
+  margin: 0 0.2rem;
+  background: transparent;
+  padding: 0.5rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  border: none;
+  color: var(--text);
+  &:hover {
+    background-color: var(--accent);
+    border-color: transparent;
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 50%;
+}

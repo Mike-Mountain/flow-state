@@ -10,7 +10,8 @@ import {ListItemDirective} from "./directives/list-item.directive";
     ListItemDirective
   ],
   exports: [
-    ListComponent
+    ListComponent,
+    ListItemDirective
   ],
   imports: [
     CommonModule

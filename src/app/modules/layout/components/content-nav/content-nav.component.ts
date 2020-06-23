@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {ListItem} from "../../../shared/models/list.model";
 import {ContentTabsService} from "../../../shared/services/content-tabs/content-tabs.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Location} from "@angular/common";
 
 @Component({
   selector: 'app-content-nav',
@@ -14,7 +15,8 @@ export class ContentNavComponent implements OnInit {
   tabsList: Observable<ListItem[]>;
 
   constructor(public tabsService: ContentTabsService,
-              private router: Router) {
+              private router: Router,
+              private location: Location) {
   }
 
   ngOnInit(): void {
@@ -27,10 +29,14 @@ export class ContentNavComponent implements OnInit {
 
   }
 
-  removeTab(tab: {item: ListItem, index: number}, tabs: ListItem[]) {
+  removeTab(tab: { item: ListItem, index: number }, tabs: ListItem[]) {
     if (this.tabsService.activeTab.label === tab.item.label) {
       this.tabsService.activeTab = tabs[tab.index - 1];
-      this.router.navigateByUrl(`/projects/details/${tabs[tab.index - 1].value}`);
+      if (this.tabsService.activeTab) {
+        this.router.navigateByUrl(`/projects/details/${tabs[tab.index - 1].value}`);
+      } else {
+        this.router.navigateByUrl('/');
+      }
     }
     this.tabsService.removeTab(tab.item);
   }

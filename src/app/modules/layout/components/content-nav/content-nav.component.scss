@@ -2,5 +2,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: var(--dark);
+  background-color: var(--cardBg);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
 }

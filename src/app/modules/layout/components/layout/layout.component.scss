@@ -15,13 +15,13 @@
 .top-navigation {
   grid-area: header;
   position: relative;
-  background: var(--dark);
+  background: var(--cardBg);
 }
 
 .side-navigation {
   grid-area: sidenav;
   position: relative;
-  background: var(--dark);
+  background: var(--cardBg);
   p {
     transform: rotate(90deg);
   }
@@ -30,24 +30,24 @@
 .side-panel {
   grid-area: sidepanel;
   position: relative;
-  background: var(--darker);
+  background: var(--pageBg);
 }
 
 .main-content {
   grid-area: maincontent;
   position: relative;
-  background: var(--darker);
+  background: var(--pageBg);
 }
 
 .bottom-panel {
   grid-area: bottompanel;
   position: relative;
-  background: var(--darker);
+  background: var(--pageBg);
 }
 
 .footer-navigation {
   grid-area: footer;
   position: relative;
-  background: var(--dark);
+  background: var(--cardBg);
 }
 

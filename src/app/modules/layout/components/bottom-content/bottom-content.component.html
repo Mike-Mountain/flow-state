@@ -1,0 +1,10 @@
+<ng-container *ngIf="activePanel !== 'login' && activePanel !== 'admin'; else lazy">
+  <p>{{activePanel}} works!</p>
+</ng-container>
+
+<ng-template #lazy>
+  <app-lazy-container
+    [moduleName]="activePanel"
+  ></app-lazy-container>
+</ng-template>
+

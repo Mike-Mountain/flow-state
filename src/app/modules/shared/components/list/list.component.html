@@ -25,7 +25,7 @@
         </span>
         {{item.label}}
         <ng-container *ngIf="item.canRemove">
-          <button class="ngm-btn ngm-btn-danger btn-sm ml-2" (click)="removeItem(item, $event, index)">
+          <button class="button button-danger btn-sm ml-2" (click)="removeItem(item, $event, index)">
             <i class="far fa-times-circle"></i>
           </button>
         </ng-container>

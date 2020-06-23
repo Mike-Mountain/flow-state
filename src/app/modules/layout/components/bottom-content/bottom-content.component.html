@@ -1,8 +1,8 @@
 <ng-container *ngIf="activeTab | async as activeTab">
   <div class="horizontal-nav">
     <p>{{activeTab.label}}</p>
-    <button class="ngm-btn ngm-btn-outline-danger btn-sm mr-2" (click)="closeBottomPanel()">
-      -
+    <button class="button-round button-outline-danger btn-sm mr-2" (click)="closeBottomPanel()">
+      <i class="fas fa-times"></i>
     </button>
   </div>
   <ng-container

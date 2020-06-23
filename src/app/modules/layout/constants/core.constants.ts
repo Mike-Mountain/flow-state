@@ -1,6 +1,6 @@
-import {NgmListItem} from "ng-mountain";
+import {ListItem} from "../../shared/models/list.model";
 
-export const vitaList: NgmListItem[] = [
+export const vitaList: ListItem[] = [
   {label: 'Skills', value: 'skills'},
   {label: 'Hobbies', value: 'hobbies'},
   {label: 'Experience', value: 'experience'},
@@ -8,7 +8,7 @@ export const vitaList: NgmListItem[] = [
   {label: 'Contact', value: 'contact'},
 ]
 
-export const utilList: NgmListItem[] = [
+export const utilList: ListItem[] = [
   {label: 'Github', value: 'github'},
   {label: 'Theme', value: 'theme'},
   {label: 'Admin', value: 'admin', isHidden: true},

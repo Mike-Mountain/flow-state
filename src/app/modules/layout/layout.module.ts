@@ -10,7 +10,9 @@ import {SidePanelComponent} from "./components/side-panel/side-panel.component";
 import {SideNavComponent} from "./components/side-nav/side-nav.component";
 import {NgmDialogModule} from "ng-mountain";
 import {FormsModule} from "@angular/forms";
-import {SharedModule} from "../../../shared/shared.module";
+import {SharedModule} from "../shared/shared.module";
+import { BottomContentComponent } from './components/bottom-content/bottom-content.component';
+import { LazyContainerComponent } from './components/bottom-content/lazy-container/lazy-container.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import {SharedModule} from "../../../shared/shared.module";
     FooterComponent,
     ContentNavComponent,
     SidePanelComponent,
-    SideNavComponent
+    SideNavComponent,
+    BottomContentComponent,
+    LazyContainerComponent
   ],
   exports: [
     LayoutDirective,

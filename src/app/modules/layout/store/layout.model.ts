@@ -1,6 +1,11 @@
+export interface GridContent {
+  bottomContent: string;
+}
+
 export interface Layout {
   gridRows: GridRows;
   gridColumns: GridColumns;
+  gridContent: GridContent;
 }
 
 export interface GridRows {
@@ -19,7 +24,8 @@ export interface GridColumns {
 export function createLayout(layout: Partial<Layout>): Layout {
   return {
     gridRows: createGridRows(layout?.gridRows),
-    gridColumns: createGridColumns(layout?.gridColumns)
+    gridColumns: createGridColumns(layout?.gridColumns),
+    gridContent: {bottomContent: layout?.gridContent?.bottomContent}
   } as Layout
 }
 

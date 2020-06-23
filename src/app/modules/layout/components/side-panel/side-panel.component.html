@@ -20,9 +20,11 @@
       *ngIf="projects.length > 0; else noProjects"
       class="w-100"
       tagPosition="left"
-      tagColor="accent"
+      tagColor="info"
       hoverColor="primary"
+      [selectedValue]="tabsService.activeTab?.value"
       [items]="projects"
+      (selectedItem)="selectItem($event, 'projects')"
     ></app-list>
   </nav>
 
@@ -46,7 +48,7 @@
     <app-list
       *ngIf="blogPosts?.length > 0; else noBlog"
       tagPosition="left"
-      tagColor="accent"
+      tagColor="info"
       hoverColor="primary"
       [items]="blogPosts"
     ></app-list>

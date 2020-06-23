@@ -1,25 +1,34 @@
-<section class="ngm-list">
+<section class="list">
   <ng-container *ngIf="title">
     <h3 class="text-center">{{title}}</h3>
     <hr class="w-75 mx-auto">
   </ng-container>
   <div
     class="h-100"
-    [ngClass]="direction === 'vertical' ? ['flex-center', 'flex-column', 'align-items-start'] : ['flex-center']"
+    [ngClass]="direction === 'vertical' ? ['flex-center', 'flex-column', 'align-items-start'] : ['flex-start']"
   >
-    <ng-container *ngFor="let item of items">
+    <ng-container *ngFor="let item of items; let index = index">
       <button
         *ngIf="!item.isHidden"
         appListItem
-        class="ngm-list-item h-100"
-        [class.text-center]="direction === 'horizontal'"
+        class="list-item h-100"
+        [class.w-100]="direction === 'vertical'"
+        [class.flex-center]="direction === 'horizontal'"
         [tagPosition]="tagPosition"
         [tagColor]="tagColor"
         [hoverColor]="hoverColor"
-        [isActive]="selectedValue === item.value"
-        (click)="selectValue(item.value)"
+        [isActive]="selectedValue === item.value && canHaveActiveItem"
+        (click)="selectValue(item)"
       >
+        <span *ngIf="item.iconClass && item.showIcon">
+          <i [class]="item.iconClass"></i>
+        </span>
         {{item.label}}
+        <ng-container *ngIf="item.canRemove">
+          <button class="ngm-btn ngm-btn-danger btn-sm ml-2" (click)="removeItem(item, $event, index)">
+            <i class="far fa-times-circle"></i>
+          </button>
+        </ng-container>
       </button>
     </ng-container>
   </div>

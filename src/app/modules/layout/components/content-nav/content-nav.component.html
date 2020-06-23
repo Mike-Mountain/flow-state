@@ -1,0 +1,15 @@
+<div class="content-nav">
+  <ng-container *ngIf="tabsList | async as tabs">
+    <app-list
+      class="w-100"
+      tagPosition="bottom"
+      tagColor="info"
+      hoverColor="primary"
+      direction="horizontal"
+      [selectedValue]="tabsService.activeTab?.value"
+      [items]="tabs"
+      (selectedItem)="selectTab($event)"
+      (remove)="removeTab($event, tabs)"
+    ></app-list>
+  </ng-container>
+</div>

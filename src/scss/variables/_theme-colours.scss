@@ -1,4 +1,4 @@
-:root {
+body {
   --primary: #ff6a00;
   --primaryValues: 255, 106, 0;
   --accent: #1a357a;
@@ -23,5 +23,8 @@
   --cardBg: var(--dark);
   --cardTitle: var(--light);
   --borderColor: var(--light);
+  --borderColorValues: var(--lightValues);
+  --shadowColor: var(--light);
+  --shadowColorValues: var(--lightValues);
   --boxShadow:  0 2px 4px rgba(0, 0, 0, 0.8), 0 0 3px 1px rgba(0, 0, 0, 0.8);
 }

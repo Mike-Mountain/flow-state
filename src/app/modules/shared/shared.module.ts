@@ -1,17 +1,20 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ListComponent} from './components/list/list.component';
-import {ListItemDirective} from "./directives/list-item.directive";
+import {ListItemDirective} from "./directives/list-item/list-item.directive";
+import {AuthenticatedWithRoleDirective} from "./directives/authenticated-with-role/authenticated-with-role.directive";
 
 
 @NgModule({
   declarations: [
     ListComponent,
-    ListItemDirective
+    ListItemDirective,
+    AuthenticatedWithRoleDirective
   ],
   exports: [
     ListComponent,
-    ListItemDirective
+    ListItemDirective,
+    AuthenticatedWithRoleDirective
   ],
   imports: [
     CommonModule

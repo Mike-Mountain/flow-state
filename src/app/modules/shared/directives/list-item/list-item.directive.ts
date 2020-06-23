@@ -1,5 +1,5 @@
 import {Directive, ElementRef, HostListener, Input, OnChanges, OnInit, Renderer2, SimpleChanges} from '@angular/core';
-import {ItemDirection} from "../models/list.model";
+import {ItemDirection} from "../../models/list.model";
 
 @Directive({
   selector: '[appListItem]'

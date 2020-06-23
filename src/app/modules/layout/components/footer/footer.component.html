@@ -3,11 +3,12 @@
     <app-list
       class="h-100"
       tagPosition="top"
-      tagColor="accent"
+      tagColor="info"
       hoverColor="primary"
       direction="horizontal"
+      [canHaveActiveItem]="vitaeHasActiveItem"
       [items]="vitaeList"
-      (value)="changeActivePanel($event)"
+      (item)="changeActivePanel($event)"
     ></app-list>
   </div>
   <div class="w-50 h-100 flex-end">
@@ -15,19 +16,17 @@
       #date
       class="ngm-list-item h-100 flex-end"
       appListItem
-      tagPosition="top"
-      tagColor="accent"
-      hoverColor="primary"
       [isActive]="false"
     ></button>
     <app-list
       class="h-100"
       tagPosition="top"
-      tagColor="accent"
+      tagColor="info"
       hoverColor="primary"
       direction="horizontal"
+      [canHaveActiveItem]="utilsHasActiveItem"
       [items]="utilList"
-      (value)="changeActivePanel($event)"
+      (item)="changeActivePanel($event)"
     ></app-list>
   </div>
 </div>

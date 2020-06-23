@@ -9,15 +9,15 @@ import {User} from "../../../authentication/store/session.model";
 })
 export class AuthenticatedWithRoleDirective implements OnInit, OnDestroy {
 
-  @Input() authenticatedWithRole: string;
-  userSubscription: Subscription;
+  @Input() private authenticatedWithRole: string;
+  private userSubscription: Subscription;
 
   constructor(private el: TemplateRef<any>,
               private viewContainer: ViewContainerRef,
               private sessionQuery: SessionQuery) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.viewContainer.clear();
     this.userSubscription = this.sessionQuery.selectUser$().subscribe(user => {
       switch (true) {
@@ -37,11 +37,11 @@ export class AuthenticatedWithRoleDirective implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.userSubscription.unsubscribe();
   }
 
-  createView() {
+  private createView(): void {
     if (this.viewContainer.length < 1) {
       this.viewContainer.createEmbeddedView(this.el);
     }

@@ -20,15 +20,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public openDropdown(projects: TemplateRef<any>, origin: HTMLElement) {
+  public openDropdown(projects: TemplateRef<any>, origin: HTMLElement): void {
     this.dialogRef = this.dialogService.open({content: projects, origin});
   }
 
-  search(searchText: string) {
+  public search(searchText: string): void {
     console.log(searchText);
   }
 
-  runProject() {
+  public runProject(): void {
 
   }
 }

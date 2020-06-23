@@ -1,5 +1,9 @@
 import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {LayoutQuery} from "../../store/layout.query";
+import {LayoutService} from "../../store/layout.service";
+import {ContentTabsService} from "../../../shared/services/content-tabs/content-tabs.service";
+import {ListItem} from "../../../shared/models/list.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-bottom-content',
@@ -9,16 +13,19 @@ import {LayoutQuery} from "../../store/layout.query";
 export class BottomContentComponent implements OnInit {
 
   @ViewChild('container', {read: ViewContainerRef}) private container: ViewContainerRef;
-  public activePanel: string;
 
-  constructor(private layoutQuery: LayoutQuery) {
+  public activeTab: Observable<ListItem>;
+
+  constructor(private layoutQuery: LayoutQuery,
+              private layoutService: LayoutService,
+              private tabsService: ContentTabsService) {
   }
 
   ngOnInit(): void {
-    // TODO: Use the async pipe instead
-    this.layoutQuery.select().subscribe(layout => {
-      this.activePanel = layout.gridContent.bottomContent;
-    })
+    this.activeTab = this.tabsService.getActiveTabBottom();
   }
 
+  public closeBottomPanel(): void {
+    this.layoutService.updateBottomContentRow('0');
+  }
 }

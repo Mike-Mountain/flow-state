@@ -8,7 +8,7 @@
       direction="horizontal"
       [canHaveActiveItem]="vitaeHasActiveItem"
       [items]="vitaeList"
-      (item)="changeActivePanel($event)"
+      (selectedItem)="changeActivePanel($event)"
     ></app-list>
   </div>
   <div class="w-50 h-100 flex-end">
@@ -26,7 +26,7 @@
       direction="horizontal"
       [canHaveActiveItem]="utilsHasActiveItem"
       [items]="utilList"
-      (item)="changeActivePanel($event)"
+      (selectedItem)="changeActivePanel($event)"
     ></app-list>
   </div>
 </div>

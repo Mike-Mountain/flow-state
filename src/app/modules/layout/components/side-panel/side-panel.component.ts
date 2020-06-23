@@ -43,7 +43,7 @@ export class SidePanelComponent implements OnInit {
     });
   }
 
-  selectItem(item: ListItem, listName: string) {
+  public selectItem(item: ListItem, listName: string) {
     if (listName === 'projects') {
       const tab: ListItem = {
         ...item,
@@ -51,8 +51,8 @@ export class SidePanelComponent implements OnInit {
         showIcon: true,
         canRemove: true
       }
-      this.tabsService.addTab(tab);
-      this.tabsService.activeTab = tab;
+      this.tabsService.addTabTop(tab);
+      this.tabsService.topActiveTab = tab;
       this.router.navigateByUrl(`/projects/details/${tab.value}`);
     }
   }

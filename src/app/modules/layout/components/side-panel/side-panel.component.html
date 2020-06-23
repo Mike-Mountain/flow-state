@@ -22,7 +22,7 @@
       tagPosition="left"
       tagColor="info"
       hoverColor="primary"
-      [selectedValue]="tabsService.activeTab?.value"
+      [selectedValue]="tabsService.topActiveTab?.value"
       [items]="projects"
       (selectedItem)="selectItem($event, 'projects')"
     ></app-list>

@@ -8,18 +8,18 @@ import {ItemDirection, ListItem} from "../../models/list.model";
 })
 export class ListComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() items: ListItem[];
-  @Input() direction: 'horizontal' | 'vertical' = 'vertical';
-  @Input() tagPosition: ItemDirection;
-  @Input() tagColor: string;
-  @Input() hoverColor: string;
-  @Input() canHaveActiveItem = true;
-  @Input() selectedValue?: string;
+  @Input() public title: string;
+  @Input() public items: ListItem[];
+  @Input() public direction: 'horizontal' | 'vertical' = 'vertical';
+  @Input() public tagPosition: ItemDirection;
+  @Input() public tagColor: string;
+  @Input() public hoverColor: string;
+  @Input() public canHaveActiveItem = true;
+  @Input() public selectedValue?: string;
 
-  @Output() item = new EventEmitter<string>();
-  @Output() selectedItem = new EventEmitter<ListItem>();
-  @Output() remove = new EventEmitter<{item: ListItem, index: number}>();
+  @Output() private item = new EventEmitter<string>();
+  @Output() private selectedItem = new EventEmitter<ListItem>();
+  @Output() private remove = new EventEmitter<{item: ListItem, index: number}>();
 
 
   constructor() {
@@ -34,7 +34,7 @@ export class ListComponent implements OnInit {
     this.item.emit(this.selectedValue);
   }
 
-  public removeItem(item: ListItem, event: Event, index: number) {
+  public removeItem(item: ListItem, event: Event, index: number): void {
     event.preventDefault();
     this.remove.emit({item, index});
   }

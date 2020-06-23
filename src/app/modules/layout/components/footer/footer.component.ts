@@ -11,6 +11,7 @@ import {DatePipe} from "@angular/common";
 import {LayoutService} from "../../store/layout.service";
 import {LayoutQuery} from "../../store/layout.query";
 import {ListItem} from "../../../shared/models/list.model";
+import {ContentTabsService} from "../../../shared/services/content-tabs/content-tabs.service";
 
 @Component({
   selector: 'app-footer',
@@ -29,6 +30,7 @@ export class FooterComponent implements OnInit {
   private datePipe = new DatePipe('en-za');
 
   constructor(public layoutQuery: LayoutQuery,
+              private tabsService: ContentTabsService,
               private zone: NgZone,
               private layoutService: LayoutService,
               private renderer: Renderer2) {
@@ -42,14 +44,13 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeActivePanel(panel: string): void {
+  public changeActivePanel(panel: ListItem): void {
+    this.tabsService.setActiveTabBottom(panel);
     if (this.layoutQuery.getValue().gridRows.bottomContentRow === '0') {
-      this.layoutService.updateBottomContentRow('2fr', panel);
-    } else {
-      this.layoutService.updateBottomPanelContent(panel);
+      this.layoutService.updateBottomContentRow('2fr');
     }
-    this.utilsHasActiveItem = this.utilList.findIndex(util => util.value === panel) > -1;
-    this.vitaeHasActiveItem = this.vitaeList.findIndex(vitae => vitae.value === panel) > -1;
+    this.utilsHasActiveItem = this.utilList.findIndex(util => util.value === panel.value) > -1;
+    this.vitaeHasActiveItem = this.vitaeList.findIndex(vitae => vitae.value === panel.value) > -1;
   }
 
 }

@@ -15,27 +15,27 @@ export class SessionQuery extends Query<SessionState> {
     super(store);
   }
 
-  selectUser$(): Observable<User> {
+  public selectUser$(): Observable<User> {
     return this.user$;
   }
 
-  getUser(): User {
+  public getUser(): User {
     return this.store.getValue().user;
   }
 
-  selectToken$(): Observable<string> {
+  public selectToken$(): Observable<string> {
     return this.token$;
   }
 
-  getToken(): string {
+  public getToken(): string {
     return this.store.getValue().jwt;
   }
 
-  selectIsLoggedIn$(): Observable<boolean> {
+  public selectIsLoggedIn$(): Observable<boolean> {
     return this.isLoggedIn$;
   }
 
-  getIsLoggedIn(): boolean {
+  public getIsLoggedIn(): boolean {
     return this.store.getValue().jwt?.length > 0;
   }
 

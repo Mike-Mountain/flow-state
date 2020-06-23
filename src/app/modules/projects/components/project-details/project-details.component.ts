@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -8,9 +8,10 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ProjectDetailsComponent implements OnInit {
 
-  currentProject: string;
+  public currentProject: string;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

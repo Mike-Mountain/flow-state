@@ -19,7 +19,7 @@ export class SideNavComponent implements OnInit {
     this.state = this.layoutService.sideNavState;
   }
 
-  togglePanel(panel: string) {
+  public togglePanel(panel: string): void {
     this.layoutService.sideNavState[panel] = !this.layoutService.sideNavState[panel];
     // refresh component state
     this.state = this.layoutService.sideNavState;

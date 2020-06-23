@@ -1,10 +1,18 @@
-<ng-container *ngIf="activePanel !== 'login' && activePanel !== 'admin'; else lazy">
-  <p>{{activePanel}} works!</p>
+<ng-container *ngIf="activeTab | async as activeTab">
+  <div class="horizontal-nav">
+    <p>{{activeTab.label}}</p>
+    <button class="ngm-btn ngm-btn-outline-danger btn-sm mr-2" (click)="closeBottomPanel()">
+      -
+    </button>
+  </div>
+  <ng-container
+    *ngIf="activeTab.value !== 'login' && activeTab.value !== 'admin'; else lazy">
+    <p>{{activeTab.label}} works!</p>
+  </ng-container>
+
+  <ng-template #lazy>
+    <app-lazy-container
+      [moduleName]="activeTab.value"
+    ></app-lazy-container>
+  </ng-template>
 </ng-container>
-
-<ng-template #lazy>
-  <app-lazy-container
-    [moduleName]="activePanel"
-  ></app-lazy-container>
-</ng-template>
-

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {ListItem} from "../../../shared/models/list.model";
 import {ContentTabsService} from "../../../shared/services/content-tabs/content-tabs.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {Location} from "@angular/common";
 
 @Component({
@@ -12,7 +12,7 @@ import {Location} from "@angular/common";
 })
 export class ContentNavComponent implements OnInit {
 
-  tabsList: Observable<ListItem[]>;
+  public tabsList: Observable<ListItem[]>;
 
   constructor(public tabsService: ContentTabsService,
               private router: Router,
@@ -20,24 +20,24 @@ export class ContentNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tabsList = this.tabsService.getTabsList();
+    this.tabsList = this.tabsService.getTopTabsList();
   }
 
-  selectTab(tab: ListItem) {
-    this.tabsService.activeTab = tab;
+  public selectTab(tab: ListItem): void {
+    this.tabsService.topActiveTab = tab;
     this.router.navigateByUrl(`/projects/details/${tab.value}`);
 
   }
 
-  removeTab(tab: { item: ListItem, index: number }, tabs: ListItem[]) {
-    if (this.tabsService.activeTab.label === tab.item.label) {
-      this.tabsService.activeTab = tabs[tab.index - 1];
-      if (this.tabsService.activeTab) {
+  public removeTab(tab: { item: ListItem, index: number }, tabs: ListItem[]): void {
+    if (this.tabsService.topActiveTab?.label === tab.item.label) {
+      this.tabsService.topActiveTab = tabs[tab.index - 1];
+      if (this.tabsService.topActiveTab) {
         this.router.navigateByUrl(`/projects/details/${tabs[tab.index - 1].value}`);
       } else {
         this.router.navigateByUrl('/');
       }
     }
-    this.tabsService.removeTab(tab.item);
+    this.tabsService.removeTabTop(tab.item);
   }
 }

@@ -18,7 +18,8 @@ import {
 export class LazyContainerComponent implements OnInit, OnChanges {
 
   @ViewChild('container', {read: ViewContainerRef}) private container: ViewContainerRef;
-  @Input() moduleName: string;
+
+  @Input() private moduleName: string;
 
   constructor(private compiler: Compiler,
               private injector: Injector) {
@@ -35,7 +36,7 @@ export class LazyContainerComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
-  loadAuthModule() {
+  private loadAuthModule(): void {
     import('../../../../authentication/authentication.module').then(({AuthenticationModule}) => {
       this.compiler.compileModuleAsync(AuthenticationModule).then(moduleFactory => {
         // Create a moduleRef, resolve an entry component, create the component
@@ -46,7 +47,7 @@ export class LazyContainerComponent implements OnInit, OnChanges {
     });
   }
 
-  loadAdminModule() {
+  private loadAdminModule(): void {
     import('../../../../admin/admin.module').then(({AdminModule}) => {
       this.compiler.compileModuleAsync(AdminModule).then(moduleFactory => {
         // Create a moduleRef, resolve an entry component, create the component

@@ -4,11 +4,7 @@
 }
 
 .horizontal-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--cardBg);
-  width: 100%;
+  padding: .3rem 0;
 }
 
 .side-panel-inner {

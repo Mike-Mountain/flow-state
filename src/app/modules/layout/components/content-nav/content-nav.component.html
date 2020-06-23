@@ -6,7 +6,7 @@
       tagColor="info"
       hoverColor="primary"
       direction="horizontal"
-      [selectedValue]="tabsService.activeTab?.value"
+      [selectedValue]="tabsService.topActiveTab?.value"
       [items]="tabs"
       (selectedItem)="selectTab($event)"
       (remove)="removeTab($event, tabs)"

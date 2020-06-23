@@ -13,7 +13,7 @@ export class SessionService {
               private http: HttpClient) {
   }
 
-  login(user: { identifier: string, password: string }): Observable<any> {
+  public login(user: { identifier: string, password: string }): Observable<any> {
     const url = `${environment.apiUrl}/auth/local`;
     return this.http.post(url, user).pipe(
       tap(session => {
@@ -22,7 +22,7 @@ export class SessionService {
     );
   }
 
-  logout(): void {
+  public logout(): void {
     createInitialState();
     this.sessionStore.reset();
   }

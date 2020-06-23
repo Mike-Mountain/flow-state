@@ -4,7 +4,9 @@ import {AdminContainerComponent} from './components/admin-container/admin-contai
 
 
 @NgModule({
-  declarations: [AdminContainerComponent],
+  declarations: [
+    AdminContainerComponent
+  ],
   imports: [
     CommonModule
   ]

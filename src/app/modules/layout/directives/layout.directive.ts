@@ -9,8 +9,8 @@ import {LayoutService} from "../store/layout.service";
 })
 export class LayoutDirective implements OnInit, OnDestroy {
 
-  @Input() panelName
-  @Input() direction: 'rows' | 'columns';
+  @Input() private panelName
+  @Input() private direction: 'rows' | 'columns';
 
   private layoutSubscription: Subscription;
   private currentLayout: Layout;
@@ -61,12 +61,12 @@ export class LayoutDirective implements OnInit, OnDestroy {
     });
   }
 
-  private resizeElement(grid: GridColumns | GridRows) {
+  private resizeElement(grid: GridColumns | GridRows): void {
     const gridValues = Object.values(grid).join(' ');
     this.renderer.setStyle(this.parentNode, `grid-template-${this.direction}`, gridValues);
   };
 
-  private listen() {
+  private listen(): void {
     const windowHeight = window.innerHeight;
     this.renderer.listen(this.resizeHelper, 'drag', (event) => {
       this.direction === 'columns' ?
@@ -81,7 +81,7 @@ export class LayoutDirective implements OnInit, OnDestroy {
     })
   }
 
-  private toggleResizeHelper(grid: GridColumns | GridRows) {
+  private toggleResizeHelper(grid: GridColumns | GridRows): void {
     const gridValues = Object.values(grid).join(' ');
     if (gridValues.split(' ').includes('0')) {
       this.renderer.addClass(this.resizeHelper, 'resize-helper-hidden');
@@ -90,7 +90,7 @@ export class LayoutDirective implements OnInit, OnDestroy {
     }
   }
 
-  private createHelperElements() {
+  private createHelperElements(): void {
     this.parentNode = this.renderer.parentNode(this.el.nativeElement);
     this.resizeHelper = this.renderer.createElement('div');
     this.renderer.setAttribute(this.resizeHelper, 'draggable', 'true');
@@ -100,7 +100,7 @@ export class LayoutDirective implements OnInit, OnDestroy {
       this.renderer.addClass(this.resizeHelper, 'resize-helper-col');
   }
 
-  private hasChanged(currentValue, newValue) {
+  private hasChanged(currentValue, newValue): boolean {
     return currentValue !== newValue;
   }
 

@@ -7,35 +7,53 @@ import {ListItem} from "../../models/list.model";
 })
 export class ContentTabsService {
 
-  get activeTab(): ListItem {
-    return this._activeTab;
+  get bottomActiveTab(): ListItem {
+    return this._bottomActiveTab;
   }
 
-  set activeTab(value: ListItem) {
-    this._activeTab = value;
+  set bottomActiveTab(value: ListItem) {
+    this._bottomActiveTab = value;
   }
 
-  private _activeTab: ListItem;
-  private tabsList = new BehaviorSubject<ListItem[]>([]);
+  get topActiveTab(): ListItem {
+    return this._topActiveTab;
+  }
+
+  set topActiveTab(value: ListItem) {
+    this._topActiveTab = value;
+  }
+
+  private _topActiveTab: ListItem;
+  private _bottomActiveTab: ListItem;
+  private topTabsList = new BehaviorSubject<ListItem[]>([]);
+  private activeTabBottom = new BehaviorSubject<ListItem>(undefined);
 
   constructor() {
   }
 
-  public getTabsList(): Observable<ListItem[]> {
-    return this.tabsList.asObservable();
+  public getActiveTabBottom(): Observable<ListItem> {
+    return this.activeTabBottom.asObservable();
   }
 
-  public addTab(tab: ListItem): void {
-    const tabs = this.tabsList.getValue();
+  public setActiveTabBottom(tab: ListItem): void {
+    this.activeTabBottom.next(tab);
+  }
+
+  public getTopTabsList(): Observable<ListItem[]> {
+    return this.topTabsList.asObservable();
+  }
+
+  public addTabTop(tab: ListItem): void {
+    const tabs = this.topTabsList.getValue();
     if (tabs.findIndex(item => item.label === tab.label) < 0) {
       tabs.push(tab);
     }
-    this.tabsList.next(tabs);
+    this.topTabsList.next(tabs);
   }
 
-  public removeTab(tab: ListItem): void {
-    let tabs = this.tabsList.getValue();
+  public removeTabTop(tab: ListItem): void {
+    let tabs = this.topTabsList.getValue();
     tabs = tabs.filter(item => item.label !== tab.label);
-    this.tabsList.next(tabs);
+    this.topTabsList.next(tabs);
   }
 }

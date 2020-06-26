@@ -3,8 +3,31 @@
     <h4 class="text-center">Login</h4>
   </div>
   <div class="card-body">
-    <form>
-      Testing
-    </form>
+    <ngm-spinner></ngm-spinner>
+      <form [formGroup]="loginForm" (ngSubmit)="login()" class="w-45 mx-auto">
+        <div class="input-group">
+          <label for="identifier" class="label">Email/Username</label>
+          <input
+            class="input"
+            type="text"
+            id="identifier"
+            formControlName="identifier"
+          >
+        </div>
+
+        <div class="input-group">
+          <label for="password" class="label">Password</label>
+          <input
+            class="input"
+            type="password"
+            id="password"
+            formControlName="password"
+          >
+        </div>
+
+        <div class="flex-center w-85 mx-auto mt-2">
+          <button type="submit" class="button button-outline-primary">Login</button>
+        </div>
+      </form>
   </div>
 </div>

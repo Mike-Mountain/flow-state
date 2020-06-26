@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnDestroy, OnInit, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, Renderer2} from '@angular/core';
 import {Subscription} from "rxjs";
 import {createLayout, GridColumns, GridRows, Layout} from "../store/layout.model";
 import {LayoutQuery} from "../store/layout.query";
@@ -8,6 +8,11 @@ import {LayoutService} from "../store/layout.service";
   selector: '[appLayout]'
 })
 export class LayoutDirective implements OnInit, OnDestroy {
+
+  @HostListener('document:dragover', ['$event'])
+  onDragOver(event: Event) {
+    event.preventDefault();
+  }
 
   @Input() private panelName
   @Input() private direction: 'rows' | 'columns';

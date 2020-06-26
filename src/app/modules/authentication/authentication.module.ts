@@ -1,6 +1,8 @@
 import {ComponentFactory, ComponentFactoryResolver, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {LoginComponent} from './components/login/login.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {NgmDialogModule, NgmLoadingModule} from "ng-mountain";
 
 
 @NgModule({
@@ -8,7 +10,10 @@ import {LoginComponent} from './components/login/login.component';
     LoginComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    NgmLoadingModule,
+    NgmDialogModule
   ]
 })
 export class AuthenticationModule {

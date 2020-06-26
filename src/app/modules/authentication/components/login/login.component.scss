@@ -1,0 +1,22 @@
+.input-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  .label {
+    margin-bottom: .2rem;
+    width: 100%;
+  }
+  .input {
+    width: 100%;
+    border: 1px solid var(--borderColor);
+    border-radius: 4px;
+    padding: .35rem;
+    background-color: transparent !important;
+    color: var(--text) !important;
+    &:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+  }
+}

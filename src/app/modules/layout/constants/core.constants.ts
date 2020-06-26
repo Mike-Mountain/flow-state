@@ -11,7 +11,6 @@ export const vitaList: ListItem[] = [
 export const utilList: ListItem[] = [
   {label: 'Github', value: 'github'},
   {label: 'Theme', value: 'theme'},
-  {label: 'Admin', value: 'admin', isHidden: true},
-  {label: 'Login', value: 'login'},
-  {label: 'Logout', value: 'logout', isHidden: true},
+  // {label: 'Admin', value: 'admin', isHidden: true},
+  // {label: 'Logout', value: 'logout', isHidden: true},
 ]

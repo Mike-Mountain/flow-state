@@ -7,14 +7,6 @@ import {ListItem} from "../../models/list.model";
 })
 export class ContentTabsService {
 
-  get bottomActiveTab(): ListItem {
-    return this._bottomActiveTab;
-  }
-
-  set bottomActiveTab(value: ListItem) {
-    this._bottomActiveTab = value;
-  }
-
   get topActiveTab(): ListItem {
     return this._topActiveTab;
   }
@@ -24,7 +16,6 @@ export class ContentTabsService {
   }
 
   private _topActiveTab: ListItem;
-  private _bottomActiveTab: ListItem;
   private topTabsList = new BehaviorSubject<ListItem[]>([]);
   private activeTabBottom = new BehaviorSubject<ListItem>(undefined);
 
@@ -35,8 +26,12 @@ export class ContentTabsService {
     return this.activeTabBottom.asObservable();
   }
 
-  public setActiveTabBottom(tab: ListItem): void {
-    this.activeTabBottom.next(tab);
+  public setActiveTabBottom(tab?: ListItem): void {
+    if (tab) {
+      this.activeTabBottom.next(tab);
+    } else {
+      this.activeTabBottom.next(undefined);
+    }
   }
 
   public getTopTabsList(): Observable<ListItem[]> {

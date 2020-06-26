@@ -1,5 +1,5 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {NgmDialogRef, NgmDialogService} from "ng-mountain";
+import {NgmDialogConfig, NgmDialogRef, NgmDialogService} from "ng-mountain";
 
 @Component({
   selector: 'app-header',
@@ -21,7 +21,10 @@ export class HeaderComponent implements OnInit {
   }
 
   public openDropdown(projects: TemplateRef<any>, origin: HTMLElement): void {
-    this.dialogRef = this.dialogService.open({content: projects, origin});
+    const config: NgmDialogConfig = {
+      dialogClass: 'dialog-box'
+    };
+    this.dialogRef = this.dialogService.open({content: projects, origin, config});
   }
 
   public search(searchText: string): void {

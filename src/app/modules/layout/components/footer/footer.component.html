@@ -26,7 +26,44 @@
       direction="horizontal"
       [canHaveActiveItem]="utilsHasActiveItem"
       [items]="utilList"
+      [selectedValue]="(tabsService.getActiveTabBottom() | async)?.value"
       (selectedItem)="changeActivePanel($event)"
     ></app-list>
+    <button
+      *authenticatedWithRole="'SysAdmin'"
+      class="list-item h-100 flex-end"
+      appListItem
+      tagPosition="top"
+      tagColor="info"
+      hoverColor="primary"
+      [isActive]="(tabsService.getActiveTabBottom() | async)?.value === 'admin'"
+      (click)="changeActivePanel({label: 'Admin', value: 'admin'})"
+    >
+      Admin
+    </button>
+    <button
+      *authenticatedWithRole="'Unauthenticated'"
+      class="list-item h-100 flex-end"
+      appListItem
+      tagPosition="top"
+      tagColor="info"
+      hoverColor="primary"
+      [isActive]="(tabsService.getActiveTabBottom() | async)?.value === 'login'"
+      (click)="changeActivePanel({label: 'Login', value: 'login'})"
+    >
+      Login
+    </button>
+    <button
+      *authenticatedWithRole="'Any'"
+      class="list-item h-100 flex-end"
+      appListItem
+      tagPosition="top"
+      tagColor="info"
+      hoverColor="primary"
+      [isActive]="false"
+      (click)="logout()"
+    >
+      Logout
+    </button>
   </div>
 </div>

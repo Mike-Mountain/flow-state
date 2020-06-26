@@ -12,6 +12,7 @@ import {LayoutService} from "../../store/layout.service";
 import {LayoutQuery} from "../../store/layout.query";
 import {ListItem} from "../../../shared/models/list.model";
 import {ContentTabsService} from "../../../shared/services/content-tabs/content-tabs.service";
+import {SessionService} from "../../../authentication/store/session.service";
 
 @Component({
   selector: 'app-footer',
@@ -30,9 +31,10 @@ export class FooterComponent implements OnInit {
   private datePipe = new DatePipe('en-za');
 
   constructor(public layoutQuery: LayoutQuery,
-              private tabsService: ContentTabsService,
-              private zone: NgZone,
+              public tabsService: ContentTabsService,
+              private sessionService: SessionService,
               private layoutService: LayoutService,
+              private zone: NgZone,
               private renderer: Renderer2) {
     zone.runOutsideAngular(() => {
       setInterval(() => {
@@ -53,4 +55,13 @@ export class FooterComponent implements OnInit {
     this.vitaeHasActiveItem = this.vitaeList.findIndex(vitae => vitae.value === panel.value) > -1;
   }
 
+  public logout(): void {
+    // TODO: Do this without subscribing :/
+    this.tabsService.getActiveTabBottom().subscribe(tab => {
+      if (tab?.value === 'admin') {
+        this.layoutService.updateBottomContentRow('0');
+      }
+    })
+    this.sessionService.logout();
+  }
 }

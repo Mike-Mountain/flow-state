@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "dev": "ng serve -c dev --port=3200",
+    "dev32": "ng serve -c dev --port=3200",
+    "dev": "ng serve -c dev",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -24,7 +25,7 @@
     "@datorama/akita": "^5.0.1",
     "@datorama/akita-ng-entity-service": "^2.0.0",
     "@fortawesome/fontawesome-free": "^5.13.0",
-    "ng-mountain": "0.0.12",
+    "ng-mountain": "0.0.14",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

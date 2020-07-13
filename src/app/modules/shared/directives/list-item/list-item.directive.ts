@@ -32,10 +32,10 @@ export class ListItemDirective implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes?.isActive.currentValue === true) {
       this.renderer.setStyle(this.el.nativeElement, 'border-color', `var(--${this.tagColor})`);
-      this.renderer.addClass(this.el.nativeElement, 'ngm-list-item-active');
+      this.renderer.addClass(this.el.nativeElement, 'list-item-active');
     } else {
       this.renderer.removeStyle(this.el.nativeElement, 'border-color');
-      this.renderer.removeClass(this.el.nativeElement, 'ngm-list-item-active');
+      this.renderer.removeClass(this.el.nativeElement, 'list-item-active');
     }
   }
 

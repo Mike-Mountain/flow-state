@@ -1,0 +1,22 @@
+.admin-container {
+  width: 100%;
+  height: calc(100% - 1.9rem);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 2rem 1fr;
+  grid-template-areas: 'adminNav adminContent';
+}
+
+.admin-nav-container {
+  grid-area: adminNav;
+  height: 100%;
+  background: var(--cardBg);
+}
+
+.admin-content {
+  grid-area: adminContent;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}

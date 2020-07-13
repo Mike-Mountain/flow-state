@@ -86,15 +86,17 @@
         [class.show-search]="isSearching"
         [(ngModel)]="searchText"
       >
-      <button class="button button-primary button-sm d-none ml-1" [class.show-search]="isSearching" (click)="search(searchText)">Search</button>
+      <button class="button button-primary button-sm d-none ml-1" [class.show-search]="isSearching"
+              (click)="search(searchText)">Search
+      </button>
     </div>
   </nav>
 </section>
 
 <ng-template #projects>
-  <div class="dropdown-target">
-      <button class="dropdown-link">
-        Test Project
-      </button>
-  </div>
+  <ng-container *ngFor="let project of projectsQuery.selectAll() | async">
+    <a class="dialog-item">
+      {{project.title}}
+    </a>
+  </ng-container>
 </ng-template>

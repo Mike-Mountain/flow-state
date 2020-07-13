@@ -13,6 +13,7 @@ import {LayoutQuery} from "../../store/layout.query";
 import {ListItem} from "../../../shared/models/list.model";
 import {ContentTabsService} from "../../../shared/services/content-tabs/content-tabs.service";
 import {SessionService} from "../../../authentication/store/session.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-footer',
@@ -35,6 +36,7 @@ export class FooterComponent implements OnInit {
               private sessionService: SessionService,
               private layoutService: LayoutService,
               private zone: NgZone,
+              private router: Router,
               private renderer: Renderer2) {
     zone.runOutsideAngular(() => {
       setInterval(() => {
@@ -48,6 +50,9 @@ export class FooterComponent implements OnInit {
 
   public changeActivePanel(panel: ListItem): void {
     this.tabsService.setActiveTabBottom(panel);
+    // if (panel.value === 'login') {
+    //   this.router.navigateByUrl(`${this.router.url}(bottom:admin)`);
+    // }
     if (this.layoutQuery.getValue().gridRows.bottomContentRow === '0') {
       this.layoutService.updateBottomContentRow('2fr');
     }

@@ -17,6 +17,7 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
     if (!this.sessionQuery.getIsLoggedIn()) {
+      console.log('Unauthenticated!');
       return next.handle(request);
     }
 

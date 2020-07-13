@@ -1,1 +1,125 @@
-<p>admin-projects works!</p>
+<section class="admin-projects">
+  <div class="admin-project-list-container">
+    <app-list
+      class="w-100"
+      tagPosition="left"
+      tagColor="info"
+      hoverColor="primary"
+      direction="vertical"
+      [selectedValue]="activeProject?.slug"
+      [items]="projectList"
+      (selectedItem)="changeActiveProject($event)"
+    ></app-list>
+    <button
+      appListItem
+      class="w-100 list-item"
+      tagPosition="left"
+      tagColor="info"
+      hoverColor="primary"
+      [isActive]="!activeProject"
+      (click)="createEmptyProject()"
+    >
+      Add New Project
+    </button>
+  </div>
+
+  <div class="projects-content-container">
+    <div class="flex-center flex-column">
+      <div class="flex-center w-100">
+        <div class="w-33"></div>
+        <h4 class="mt-2 w-33 flex-center">{{activeProject?.title || 'Add New Project'}}</h4>
+        <div class="w-33 flex-center">
+          <button class="button button-outline-success btn-sm mt-2" type="button" (click)="submit()">
+            <ng-container *ngIf="activeProject">
+              Save {{activeProject.title}}
+            </ng-container>
+            <ng-container *ngIf="!activeProject">
+              Add Project
+            </ng-container>
+          </button>
+        </div>
+      </div>
+      <hr class="w-75">
+      <form [formGroup]="projectForm" class="flex-around flex-wrap w-100">
+        <div class="input-group w-45">
+          <label for="title" class="input-label">
+            Project Title
+          </label>
+          <input
+            class="input"
+            type="text"
+            id="title"
+            name="title"
+            required
+            formControlName="title"
+          >
+        </div>
+
+        <div class="input-group w-45">
+          <label for="slug" class="input-label">
+            Project Slug
+          </label>
+          <input
+            class="input"
+            type="text"
+            id="slug"
+            name="slug"
+            required
+            formControlName="slug"
+          >
+        </div>
+
+        <div class="input-group w-45">
+          <label for="url" class="input-label">
+            Hosted Url
+          </label>
+          <input
+            class="input"
+            type="text"
+            id="url"
+            name="url"
+            required
+            formControlName="url"
+          >
+        </div>
+
+        <div class="input-group w-45">
+          <label for="githubUrl" class="input-label">
+            Github Url
+          </label>
+          <input
+            class="input"
+            type="text"
+            id="githubUrl"
+            name="githubUrl"
+            required
+            formControlName="githubUrl"
+          >
+        </div>
+
+        <div class="w-85 mx-auto my-3 card">
+          <div class="w-100 card-title flex-center">
+            <div class="w-33"></div>
+            <h4 class="w-33 flex-center">Screenshots</h4>
+            <div class="flex-center w-33">
+              <ngm-file-upload
+                [multiple]="true"
+                (files)="addFiles($event)"
+              ></ngm-file-upload>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="flex-around flex-wrap">
+              <ng-container *ngFor="let screenshot of projectForm.controls.screenshots.value">
+                <div class="flex-center flex-column">
+                  <img [src]="'http://localhost:1337' + screenshot?.data?.url" alt="" width="100">
+                  <p class="thumbnail-caption">{{screenshot.name}}</p>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

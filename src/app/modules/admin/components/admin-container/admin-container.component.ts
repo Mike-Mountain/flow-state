@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {ListItem} from "../../../shared/models/list.model";
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-admin-container',
@@ -8,14 +7,16 @@ import {ListItem} from "../../../shared/models/list.model";
 })
 export class AdminContainerComponent implements OnInit {
 
-  adminList: ListItem[] = [
-    {label: 'Projects', value: 'projects', showIcon: true, iconClass: 'fas fa-folder mr-2'},
-    {label: 'Blog', value: 'blog', showIcon: true, iconClass: 'fas fa-blog mr-2'},
-  ];
+  selectedSection: 'projects' | 'blog';
 
-  constructor() { }
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
+  }
 
   ngOnInit(): void {
+    this.selectedSection = 'projects';
+    // Because the component is built programmatically once the module is lazy-loaded,
+    // Change detection fails to pick up and instantiate the child components.
+    this.changeDetectorRef.detectChanges();
   }
 
 }

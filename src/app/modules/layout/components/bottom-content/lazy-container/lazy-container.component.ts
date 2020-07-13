@@ -42,7 +42,8 @@ export class LazyContainerComponent implements OnInit, OnChanges {
         // Create a moduleRef, resolve an entry component, create the component
         const moduleRef = moduleFactory.create(this.injector);
         const componentFactory = moduleRef.instance.resolveComponent();
-        this.container.createComponent(componentFactory, null, moduleRef.injector);
+        const { instance } = this.container.createComponent(componentFactory, null, moduleRef.injector);
+        instance.ngOnInit();
       })
     });
   }
@@ -53,7 +54,8 @@ export class LazyContainerComponent implements OnInit, OnChanges {
         // Create a moduleRef, resolve an entry component, create the component
         const moduleRef = moduleFactory.create(this.injector);
         const componentFactory = moduleRef.instance.resolveComponent();
-        this.container.createComponent(componentFactory, null, moduleRef.injector);
+        const { instance } = this.container.createComponent(componentFactory, null, moduleRef.injector);
+        instance.ngOnInit();
       })
     });
   }

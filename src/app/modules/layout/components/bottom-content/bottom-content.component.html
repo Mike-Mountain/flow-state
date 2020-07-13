@@ -1,19 +1,34 @@
 <ng-container *ngIf="activeTab | async as activeTab">
   <div class="horizontal-nav">
     <p>{{activeTab.label}}</p>
-    <button class="button-round button-outline-danger btn-sm mr-2" (click)="closeBottomPanel()">
-<!--      <i class="fas fa-grip-lines"></i>-->
+    <button
+      class="button-round button-outline-danger btn-sm mr-2"
+      (click)="closeBottomPanel()"
+    >
       -
     </button>
   </div>
-  <ng-container
-    *ngIf="activeTab.value !== 'login' && activeTab.value !== 'admin'; else lazy">
-    <p>{{activeTab.label}} works!</p>
-  </ng-container>
 
-  <ng-template #lazy>
-    <app-lazy-container
-      [moduleName]="activeTab.value"
-    ></app-lazy-container>
-  </ng-template>
+<!--  <router-outlet name="bottom"></router-outlet>-->
+
+  <ng-container [ngSwitch]="activeTab.value">
+
+    <ng-container *ngSwitchCase="'admin'">
+      <app-lazy-container
+        *authenticatedWithRole="'SysAdmin'"
+        [moduleName]="'admin'"
+      ></app-lazy-container>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'login'">
+      <app-lazy-container
+        [moduleName]="'login'"
+      ></app-lazy-container>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+      <p>{{activeTab.label}} works!</p>
+    </ng-container>
+
+  </ng-container>
 </ng-container>

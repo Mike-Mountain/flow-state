@@ -7,7 +7,8 @@ import {NG_ENTITY_SERVICE_CONFIG} from '@datorama/akita-ng-entity-service';
 import {AkitaNgDevtools} from '@datorama/akita-ngdevtools';
 import {environment} from '../environments/environment';
 import {CoreModule} from "./modules/core/core.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {TokenInterceptor} from "./modules/core/interceptors/token/token.interceptor";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,12 @@ import {HttpClientModule} from "@angular/common/http";
     {
       provide: NG_ENTITY_SERVICE_CONFIG,
       useValue: {baseUrl: environment.apiUrl}
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

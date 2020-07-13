@@ -1,0 +1,18 @@
+<nav class="vertical-nav">
+  <div class="vertical-navigation">
+    <button
+      class="vertical-tab"
+      [class.vertical-tab-active]="selected === 'projects'"
+      (click)="emitSelected('projects')"
+    >
+      Projects
+    </button>
+    <button
+      class="vertical-tab"
+      [class.vertical-tab-active]="selected === 'blog'"
+      (click)="emitSelected('blog')"
+    >
+      Blog
+    </button>
+  </div>
+</nav>

@@ -1,5 +1,6 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {NgmDialogConfig, NgmDialogRef, NgmDialogService} from "ng-mountain";
+import {ProjectsQuery} from "../../../projects/store/projects.query";
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit {
 
   private dialogRef: NgmDialogRef;
 
-  constructor(private dialogService: NgmDialogService) {
+  constructor(private dialogService: NgmDialogService,
+              public projectsQuery: ProjectsQuery) {
   }
 
   ngOnInit(): void {
@@ -24,7 +26,7 @@ export class HeaderComponent implements OnInit {
     const config: NgmDialogConfig = {
       dialogClass: 'dialog-box'
     };
-    this.dialogRef = this.dialogService.open({content: projects, origin, config});
+    this.dialogRef = this.dialogService.open({content: projects, origin, config, width: '35%'});
   }
 
   public search(searchText: string): void {

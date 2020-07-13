@@ -1,1 +1,17 @@
-<p>Admin-container Works!</p>
+<div class="admin-container">
+  <aside class="admin-nav-container">
+    <app-admin-nav
+      [(selected)]="selectedSection"
+    ></app-admin-nav>
+  </aside>
+  <section class="admin-content">
+    <ng-container [ngSwitch]="selectedSection">
+      <ng-container *ngSwitchCase="'projects'">
+        <app-admin-projects></app-admin-projects>
+      </ng-container>
+      <ng-container *ngSwitchCase="'blog'">
+        <h2>Blog Works!</h2>
+      </ng-container>
+    </ng-container>
+  </section>
+</div>
